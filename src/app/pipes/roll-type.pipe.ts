@@ -11,7 +11,7 @@ export class RollTypePipe implements PipeTransform {
       return Frame.Strike;
     }
     
-    if (pins2 && pins1 + pins2 === 10) {
+    if (pins2 && pins1 > 0 && pins1 + pins2 === 10) {
       return Frame.Spare;
     }
 
