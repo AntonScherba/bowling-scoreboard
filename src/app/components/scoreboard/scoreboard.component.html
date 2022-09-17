@@ -1,0 +1,34 @@
+<div class="scoreboard">
+  <div class="cell" *ngFor="let frame of frames; let i = index">
+    <div class="head">
+      {{ i + 1 }}
+    </div>
+    <div class="body" [class.active]="currentFrameIndex === i">
+      <div class="rolls">
+        <ng-container *ngIf="frame.isLastFrame; else normalFrame">
+          <div class="rolls_item">{{ frame.rolls[0] | rollType }}</div>
+          <div class="rolls_item">
+            {{ frame.rolls[1] | rollType: frame.rolls[0] }}
+          </div>
+          <div class="rolls_item">
+            {{ frame.rolls[2] | rollType: frame.rolls[1] }}
+          </div>
+        </ng-container>
+
+        <ng-template #normalFrame>
+          <div class="rolls_item">{{ frame.rolls[0] | rollType }}</div>
+          <div class="rolls_item">
+            {{ frame.rolls[1] | rollType: frame.rolls[0] }}
+          </div>
+        </ng-template>
+      </div>
+      <div>{{ frameScores[i] }}</div>
+    </div>
+  </div>
+  <div class="cell">
+    <div class="head">Score</div>
+    <div class="body">
+      {{ totalScore }}
+    </div>
+  </div>
+</div>

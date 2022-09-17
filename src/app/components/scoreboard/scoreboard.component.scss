@@ -1,0 +1,46 @@
+$border: 2px solid black;
+
+.scoreboard {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+
+  .cell {
+    flex: 1 1 50px;
+    margin: 4px;
+
+    .head,
+    .body {
+      border-radius: 10px;
+      background-color: #fcc21b;
+    }
+
+    .body {
+      min-height: 48px;
+      margin-top: 4px;
+
+      &.active {
+        background-color: #78a3ad;
+      }
+    }
+  }
+}
+
+.rolls {
+  display: flex;
+  border-bottom: $border;
+
+  &_item {
+    flex: 1;
+    min-height: 24px;
+
+    &:first-child {
+      border-right: $border;
+    }
+
+    &:nth-child(3) {
+      border-left: $border;
+    }
+
+  }
+}

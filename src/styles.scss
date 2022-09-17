@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #FFD0AB;
+  font-family: Poppins, sans-serif;
+}
+
+h2 {
+  color: #2F2F2F;
+  margin: 0;
+}
+
+h4 {
+  color: #FFD0AB;
+  margin: 0;
+}
+
+.container {
+  padding: 32px;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-weight: bold;
+  
+  .logo {
+    width: 3rem;
+    height: 3rem;
+  }
+}

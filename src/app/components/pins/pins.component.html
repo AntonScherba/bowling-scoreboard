@@ -1,0 +1,11 @@
+<div class="pins">
+  <button class="pin" (click)="roll(0)" [disabled]="isFinished">0</button>
+  <button
+    class="pin"
+    *ngFor="let pin of pins; let i = index"
+    (click)="roll(pin)"
+    [disabled]="remaningPins < pin || isFinished"
+  >
+    {{ pin }}
+  </button>
+</div>
