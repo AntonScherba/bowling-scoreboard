@@ -9,8 +9,9 @@
     background: url("../../../assets/pin.svg") no-repeat center;
     background-size: 100%;
     cursor: pointer;
-
+    
     &:disabled {
+      cursor: default;
       opacity: 0.7;
     }
   }

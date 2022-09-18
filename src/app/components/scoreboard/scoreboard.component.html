@@ -5,22 +5,13 @@
     </div>
     <div class="body" [class.active]="currentFrameIndex === i">
       <div class="rolls">
-        <ng-container *ngIf="frame.isLastFrame; else normalFrame">
-          <div class="rolls_item">{{ frame.rolls[0] | rollType }}</div>
-          <div class="rolls_item">
-            {{ frame.rolls[1] | rollType: frame.rolls[0] }}
-          </div>
-          <div class="rolls_item">
-            {{ frame.rolls[2] | rollType: frame.rolls[1] }}
-          </div>
-        </ng-container>
-
-        <ng-template #normalFrame>
-          <div class="rolls_item">{{ frame.rolls[0] | rollType }}</div>
-          <div class="rolls_item">
-            {{ frame.rolls[1] | rollType: frame.rolls[0] }}
-          </div>
-        </ng-template>
+        <div class="rolls_item">{{ frame.rolls[0] | rollType }}</div>
+        <div class="rolls_item">
+          {{ frame.rolls[1] | rollType: frame.rolls[0] }}
+        </div>
+        <div class="rolls_item" *ngIf="frame.isLastFrame">
+          {{ frame.rolls[2] | rollType: frame.rolls[1] }}
+        </div>
       </div>
       <div>{{ frameScores[i] }}</div>
     </div>

@@ -16,12 +16,15 @@ export class PinsComponent {
   get isFinished() {
     return this.game.isFinished();
   }
-
+  
   roll(pins: number) {
-    if(this.game.roll(pins)) {
-      // this.remaningPins = 10;
-      return;
-    };
-    // this.remaningPins -= pins;
+    const isCompliteFrame = this.game.roll(pins);
+
+    if (isCompliteFrame || this.game.currentFrame.isLastFrame && this.game.currentFrame.isSpare) {
+        this.remaningPins = 10;
+        return;
+    }
+
+    this.remaningPins -= pins;
   }
 }
