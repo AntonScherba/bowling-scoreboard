@@ -20,6 +20,10 @@ export class PinsComponent {
   roll(pins: number) {
     const isCompliteFrame = this.game.roll(pins);
 
+    if (pins === TOTAL_PINS) {
+      return;
+    }
+
     if (isCompliteFrame || this.game.currentFrame.isLastFrame && this.game.currentFrame.isSpare) {
         this.remaningPins = 10;
         return;
