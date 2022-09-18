@@ -21,30 +21,32 @@ export class GameService {
 
   totalScore(): number {
     let score = 0;
-    let frameIndex = 0;
+    // rollIndex - keep track of which roll
+    let rollIndex = 0;
     this.frameScores = [];
 
     for (let i = 0; i < TOTAL_FRAMES; i++) {
-      if (this.isStrike(frameIndex) && this.strikeBonus(frameIndex)) {
-        score += 10 + this.strikeBonus(frameIndex);
+      if (this.isStrike(rollIndex) && this.strikeBonus(rollIndex)) {
+        score += 10 + this.strikeBonus(rollIndex);
         this.frameScores.push(score);
-        frameIndex++;
+        rollIndex++;
         continue;
       }
-
-      if (this.isSpare(frameIndex) && this.spareBonus(frameIndex)) {
-        score += 10 + this.spareBonus(frameIndex);
+      
+      if (this.isSpare(rollIndex) && this.spareBonus(rollIndex)) {
+        score += 10 + this.spareBonus(rollIndex);
         this.frameScores.push(score);
       }
-
-      if (this.sumOfPins(frameIndex) < 10) {
-        score += this.sumOfPins(frameIndex);
+      
+      if (this.sumOfPins(rollIndex) < 10) {
+        score += this.sumOfPins(rollIndex);
         this.frameScores.push(score);
       }
-
-      frameIndex += 2;
+      
+      // go to the first roll of the next frame
+      rollIndex += 2;
     }
-
+    
     return score;
   }
 
@@ -82,6 +84,7 @@ export class GameService {
     return this.flatRolls[frameIndex] + this.flatRolls[frameIndex + 1];
   }
 
+  // a flat array is needed for scoring (easier to count)
   private get flatRolls() {
     return this.frames.reduce(
       (acc: number[], frame) => [...acc, ...frame.rolls],
